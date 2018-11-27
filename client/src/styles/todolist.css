@@ -12,7 +12,7 @@ input {
     margin-right: 3px;
     font-size: 16px;
 }
-button {
+.todo button {
     padding: 10px;
     font-size: 16px;
     color: white;
@@ -20,22 +20,23 @@ button {
     border: 2px solid #bf0c3c;
     box-shadow: 2px 2px #777;
 }
-button:hover {
+.todo button:hover {
     background-color: #870017;
     border: 2px solid #870017;
 }
 
-ul {
+.todo ul {
     margin-top: 10px;
     padding: 0;
 }
-ul li {
+.todo ul li {
     list-style: none;
     font-size: 22px;
     color: #bf0c3c;
     background: aliceblue;
-    width: 80%;
-    margin: auto;
+    width: 85%;
+    margin: 0;
+    text-align: center;
     margin-top: 5px;
     cursor: pointer;
     /* font-weight: bold; */

@@ -8,7 +8,7 @@ const Todo = require('../../models/Todo');
 //@Route    POST
 //ACCESS    PUBLIC
 //DESC      Route to add new Todo
-router.post('/todo', (req, res) => {
+router.post('/', (req, res) => {
     const { name } = req.body;
     // Create new Todo
     const newTodo = new Todo({
@@ -26,11 +26,10 @@ router.post('/todo', (req, res) => {
 //@Route    GET
 //ACCESS    PUBLIC
 //DESC      list all todo list
-router.get('/todo', (req, res) => {
+router.get('/', (req, res) => {
     Todo.find()
         .then(todos => {
-            console.log(todos);
-            if (todos === []) res.json('no todos fo und');
+            if (todos === []) res.json('no todos found');
             else res.json(todos);
         })
         .catch(err => {
@@ -41,7 +40,7 @@ router.get('/todo', (req, res) => {
 //@Route    GET
 //ACCESS    PUBLIC
 //DESC      delete todo
-router.delete('/todo/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     const id = req.params.id;
     console.log(id);
     Todo.findByIdAndDelete(id)

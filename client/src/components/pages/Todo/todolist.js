@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ListElement from './listelement';
 import axios from 'axios';
-import '../styles/todolist.css';
+import '../../../styles/todolist.css';
 class TodoList extends Component {
     state = {
         list: []
@@ -13,7 +13,7 @@ class TodoList extends Component {
 
     updateList = () => {
         axios
-            .get('/api/todo')
+            .get('/todo')
             .then(res => {
                 if (res.data.length !== 0) this.setState({ list: res.data });
                 else this.setState({ list: [] });
@@ -27,9 +27,8 @@ class TodoList extends Component {
         this._inputElement.value = '';
         if (newTodo !== '') {
             axios
-                .post('/api/todo', { name: newTodo })
+                .post('/todo', { name: newTodo })
                 .then(todo => {
-                    console.log(todo);
                     this.updateList();
                 })
                 .catch(err => console.log(err));
@@ -40,7 +39,7 @@ class TodoList extends Component {
 
     removeTodo = id => {
         axios
-            .delete(`/api/todo/${id}`)
+            .delete(`/todo/${id}`)
             .then(todo => {
                 console.log(todo);
                 this.updateList();
@@ -50,7 +49,6 @@ class TodoList extends Component {
 
     render() {
         const { list } = this.state;
-        console.log(list);
         return (
             <div className="todo">
                 <h2>Todo App</h2>
@@ -61,7 +59,12 @@ class TodoList extends Component {
                 <ul>
                     {list.length > 0
                         ? list.map(todo => (
-                              <ListElement pid={todo._id} pname={todo.name} deletethis={this.removeTodo} />
+                              <ListElement
+                                  key={todo._id}
+                                  pid={todo._id}
+                                  pname={todo.name}
+                                  deletethis={this.removeTodo}
+                              />
                           ))
                         : null}
                 </ul>

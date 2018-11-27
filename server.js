@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const passport = require('passport');
 const mongooseUrl = require('./setup/myUrl').urls.mongoose;
 
 //Middleware for Body Parser
@@ -16,6 +17,7 @@ mongoose
 
 //Importing Routes
 const todo = require('./routes/api/todo');
+const auth = require('./routes/api/auth');
 
 //@Route    GET
 //ACCESS    PUBLIC
@@ -24,8 +26,15 @@ app.get('/', (req, res) => {
     res.send('Server is Running');
 });
 
+//Middleware for Passport
+app.use(passport.initialize());
+
+//Config for JWT stratergy
+require('./strategies/jsonwtStategy')(passport);
+
 //Setting Up Routes
-app.use('/api', todo);
+app.use('/todo', todo);
+app.use('/auth', auth);
 
 //listening to port
 const port = process.env.port | 8000;
