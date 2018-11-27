@@ -35,4 +35,4 @@ class NavBar extends Component {
     }
 }
 
-export default withStyles(styles)git clear(N
+export default withStyles(styles)(NavBar);
