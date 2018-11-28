@@ -5,4 +5,3 @@ export function ToastDashMessage(message) {
         payload: message
     };
 }
-``
