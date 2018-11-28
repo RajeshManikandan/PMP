@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+import { userLogout } from '../../actions/authActions';
 const styles = {
     root: {
         flexGrow: 1
@@ -16,6 +18,7 @@ const styles = {
 class NavBar extends Component {
     render() {
         const { classes } = this.props;
+        const { loggedIn } = this.props.auth;
         return (
             <div className={classes.root}>
                 <AppBar position="static" color="default">
@@ -23,8 +26,8 @@ class NavBar extends Component {
                         <Typography variant="h6" color="inherit" className={classes.grow}>
                             Passport JWT Login
                         </Typography>
-                        {this.props.loggedIn ? (
-                            <Button color="secondary" onClick={this.props.logout}>
+                        {loggedIn ? (
+                            <Button color="secondary" onClick={this.props.userLogout}>
                                 Logout
                             </Button>
                         ) : null}
@@ -35,4 +38,6 @@ class NavBar extends Component {
     }
 }
 
-export default withStyles(styles)(NavBar);
+const mapStateToProps = state => ({ auth: state.auth });
+
+export default connect(mapStateToProps, { userLogout })(withStyles(styles)(NavBar));
