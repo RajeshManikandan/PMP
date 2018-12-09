@@ -18,6 +18,7 @@ mongoose
 //Importing Routes
 const todo = require('./routes/api/todo');
 const auth = require('./routes/api/auth');
+const application = require('./routes/api/app');
 
 //@Route    GET
 //ACCESS    PUBLIC
@@ -35,6 +36,7 @@ require('./strategies/jsonwtStategy')(passport);
 //Setting Up Routes
 app.use('/todo', todo);
 app.use('/auth', auth);
+app.use('/app', application);
 
 //listening to port
 const port = process.env.port | 8000;

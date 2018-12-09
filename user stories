@@ -1,0 +1,61 @@
+Model Tree   
+    Users
+        first_name
+        last_name
+        email
+        password
+        DateLogged
+    UserSession
+        user_id
+        in_time
+        out_time
+        DateLogged
+    Applications{
+        name
+        type_of_application
+        installation_required
+        license_required
+    }
+    VMs{
+        nat_ip
+        host_name
+        type -  dev/prod
+        installed_softwares[
+            {name}
+        ]
+    }
+    Projects
+        users[{
+              User
+              Access Level 
+        }]
+        applications[]
+        vm[]
+        action_items[]
+        phase[]
+    }
+    action_items{
+        name
+        responsible_person
+        help_asked
+        expected_completion_date
+        overdue
+        actual_completion_date
+        completed_by
+        subtask{
+            subtask
+            parent_task_id
+        }
+    work_tracker{
+        action_items
+        users[]
+        start_time
+        end_time
+        time_taken
+    }
+
+
+
+    
+
+Page Tree

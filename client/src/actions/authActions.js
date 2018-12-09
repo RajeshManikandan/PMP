@@ -15,7 +15,6 @@ export const checkAuth = token => dispatch => {
                 if (!success) {
                     store.dispatch(ToastDashMessage(msg));
                 } else {
-                    console.log(token);
                     const { first_name, last_name, email } = user;
                     const payload = {
                         user: {
@@ -40,8 +39,9 @@ export const userRegister = ({ first_name, last_name, email, password }) => disp
         .post('/auth/register', { first_name, last_name, email, password })
         .then(res => {
             const { success, msg } = res.data;
-            if (!success) console.log(msg);
-            else {
+            if (!success) {
+                store.dispatch(ToastDashMessage(msg));
+            } else {
                 const payload = {
                     user: {
                         first_name,
@@ -63,9 +63,9 @@ export const userLogin = ({ email, password }) => dispatch => {
         .post('/auth/login', { email, password })
         .then(res => {
             const { success, msg, token, payload } = res.data;
-            if (!success) console.log(msg);
-            else {
-                console.log(payload);
+            if (!success) {
+                store.dispatch(ToastDashMessage(msg));
+            } else {
                 localStorage.setItem('token', token);
                 const _payload = {
                     user: {

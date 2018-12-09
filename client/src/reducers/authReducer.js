@@ -14,7 +14,6 @@ export default function(state = initialState, action) {
     switch (action.type) {
         case CHECK_AUTH: {
             let { user, loggedIn } = action.payload;
-            console.log('CHECK_AUTH', action.payload);
             newState = {
                 ...state,
                 user: {
@@ -44,7 +43,6 @@ export default function(state = initialState, action) {
         }
         case USER_LOGIN: {
             let { user } = action.payload;
-            console.log('USER_LOGIN', state, action.payload);
             newState = {
                 ...state.auth,
                 user: {

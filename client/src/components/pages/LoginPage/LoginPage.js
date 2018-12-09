@@ -5,7 +5,14 @@ import SignupForm from './SignupForm';
 import ForgotPasswordForm from './ForgotPasswordForm';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
 import { userRegister, userLogin } from '../../../actions/authActions';
+
+const styles = {
+    container: {
+        marginTop: '120px'
+    }
+};
 
 class LoginPage extends Component {
     constructor(props) {
@@ -52,12 +59,13 @@ class LoginPage extends Component {
 
     render() {
         const { loggedIn } = this.props.auth;
+        const { classes } = this.props;
         if (loggedIn) {
             return <Redirect to="/" />;
         }
         return (
-            <Grid container justify="center" style={{ marginTop: '30px' }}>
-                <Grid item sm={6} md={4}>
+            <Grid container justify="center" className={classes.container}>
+                <Grid item sm={8} md={4}>
                     {this.renderForm()}
                 </Grid>
             </Grid>
@@ -67,4 +75,4 @@ class LoginPage extends Component {
 
 const mapStateToProps = state => ({ auth: state.auth });
 
-export default connect(mapStateToProps, { userRegister, userLogin })(LoginPage);
+export default connect(mapStateToProps, { userRegister, userLogin })(withStyles(styles)(LoginPage));
