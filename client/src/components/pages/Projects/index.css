@@ -1,0 +1,38 @@
+.container {
+    margin: 50px;
+}
+
+.container .paperContainer {
+    padding: 20px;
+}
+
+#create {
+    float: right;
+}
+#title {
+    display: inline;
+    clear: both;
+}
+ol li {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+}
+.project-table tr {
+    text-align: left;
+    font-size: 13px;
+    padding: 8px;
+    margin-top: 4px;
+    background: #ebe7e8;
+}
+.project-table td,
+th {
+    width: 200px;
+    padding: 12px;
+}
+
+.project-table td,
+td {
+    text-align: center;
+}

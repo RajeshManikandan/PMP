@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import TodoList from './components/pages/Todo/todolist';
 import Home from './components/pages/Home';
+import ProjectsPage from './components/pages/Projects';
+import CreateProjectPage from './components/pages/createProject';
 import LoginPage from './components/pages/LoginPage/LoginPage';
 import { NavBar, NavDrawer } from './components/Layouts';
 import Toast from './components/Toast';
@@ -39,6 +41,18 @@ class App extends Component {
                             <Route path="/login" exact strict render={props => <LoginPage {...props} />} />
                             <PrivateRoute path="/" exact strict component={props => <Home {...props} />} />
                             <PrivateRoute path="/apps" exact strict component={props => <Applications {...props} />} />
+                            <PrivateRoute
+                                path="/projects"
+                                exact
+                                strict
+                                component={props => <CreateProjectPage {...props} />}
+                            />
+                            <PrivateRoute
+                                path="/projects/create"
+                                exact
+                                strict
+                                component={props => <CreateProjectPage {...props} />}
+                            />
                         </Switch>
                     </Fragment>
                 </Router>

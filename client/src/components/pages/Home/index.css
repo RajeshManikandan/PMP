@@ -1,0 +1,26 @@
+body {
+    /* background-image: url('https://www.option3.io/wp-content/uploads/2017/08/continuous-test-automation.png') !important; */
+}
+
+.header {
+    text-align: center;
+    padding-top: 50px;
+}
+
+.grid_container {
+    margin-top: 50px;
+    padding: 30px;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.grid_item {
+    max-height: 400px;
+}
+.grid_item img {
+    width: 60%;
+}
+
+a {
+    text-decoration: none;
+}

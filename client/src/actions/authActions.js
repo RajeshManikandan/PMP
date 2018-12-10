@@ -6,31 +6,34 @@ import store from '../store';
 export const checkAuth = token => dispatch => {
     const token = localStorage.getItem('token');
     if (token) {
-        axios
-            .get('/auth/auth', {
-                headers: { Authorization: token }
-            })
-            .then(res => {
-                const { success, msg, user } = res.data;
-                if (!success) {
-                    store.dispatch(ToastDashMessage(msg));
-                } else {
-                    const { first_name, last_name, email } = user;
-                    const payload = {
-                        user: {
-                            first_name,
-                            last_name,
-                            email
-                        },
-                        loggedIn: true
-                    };
-                    dispatch({
-                        type: CHECK_AUTH,
-                        payload: payload
-                    });
-                }
-            })
-            .catch(err => console.log(err.message));
+        (async () => {
+            await axios
+                .get('/auth/auth', {
+                    headers: { Authorization: token }
+                })
+                .then(res => {
+                    const { success, msg, user } = res.data;
+                    if (!success) {
+                        store.dispatch(ToastDashMessage(msg));
+                    } else {
+                        const { first_name, last_name, email } = user;
+                        const payload = {
+                            user: {
+                                first_name,
+                                last_name,
+                                email
+                            },
+                            loggedIn: true
+                        };
+
+                        dispatch({
+                            type: CHECK_AUTH,
+                            payload: payload
+                        });
+                    }
+                })
+                .catch(err => console.log(err.message));
+        })();
     }
 };
 
