@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.css';
-import { Paper, Typography, TextField } from '@material-ui/core';
+import { Paper, Typography, TextField, Button } from '@material-ui/core';
 class CreateProject extends Component {
     state = {};
     render() {
@@ -19,7 +19,7 @@ class CreateProject extends Component {
                         />
                         <TextField
                             id="filled-password-input"
-                            label="Project Abbreavated Name"
+                            label="Project Short Name"
                             type="text"
                             autoComplete="current-password"
                             fullWidth
@@ -30,12 +30,24 @@ class CreateProject extends Component {
                             label="DueDate"
                             type="date"
                             fullWidth
-                            defaultValue="2017-05-24"
                             InputLabelProps={{
                                 shrink: true
                             }}
-                            style={{ marginTop: '10px' }}
+                            style={{ marginTop: '20px' }}
                         />
+                        <TextField
+                            id="desc"
+                            style={{ marginTop: '10px' }}
+                            label="Description"
+                            type="text"
+                            fullWidth
+                            multiline
+                            rows={3}
+                        />
+                        <br />
+                        <Button variant="contained" style={{ marginTop: '20px' }} color="primary" fullWidth>
+                            Create Project
+                        </Button>
                     </form>
                 </Paper>
             </div>
